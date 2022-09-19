@@ -13,7 +13,7 @@ FROM farmers_market.product
 LIMIT 5
 
 ----------------
-**TIP: Always make it a habit to individually list all column names in the case something changes in the backend:**
+**TIP: Always make it a habit to individually list all column names in the case something changes in the backend**
 ----------------
 
 SELECT product_id, product_name
