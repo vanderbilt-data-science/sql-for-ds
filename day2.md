@@ -272,4 +272,52 @@ WHERE
  )
 LIMIT 5
 
+----------------
+
+CASE - find out who sells fresh produce and who doesn’t - this is essentially creating a binary flag for a variable. We could have easily replaced this with 1’s and 0’s
+
+SELECT 
+   
+ vendor_id,
+   
+ vendor_name,
+   
+ vendor_type,
+   
+ CASE 
+      
+ WHEN LOWER(vendor_type) LIKE '%fresh%'
+        
+ THEN 'Fresh Produce'
+      
+ ELSE 'Other' 
+   
+ END AS vendor_type_condensed
+FROM farmers_market.vendor
+
+------------------
+
+CASE - grouping or binning values - which customers made purchases over and below $50
+
+SELECT 
+   
+ market_date, 
+   
+ customer_id, 
+   
+ vendor_id,
+   
+ ROUND(quantity * cost_to_customer_per_qty, 2) AS price,
+   
+ CASE 
+      
+ WHEN quantity * cost_to_customer_per_qty> 50 
+         
+ THEN 1
+
+ ELSE 0
+   
+ END AS price_over_50
+FROM farmers_market.customer_purchases
+LIMIT 10
 
